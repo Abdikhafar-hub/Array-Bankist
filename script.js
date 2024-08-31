@@ -25,7 +25,7 @@ const account3 = {
 };
 
 const account4 = {
-  owner: 'Nasra Issack',
+  owner: 'Hafsa Abdinasir',
   movements: [430, 1000, 700, 50, 90],
   interestRate: 1, // %
   pin: 4444,
@@ -37,7 +37,7 @@ const eurToUsd = 1.1; // 1 euro = 1.1 dollars
 
 // Elements
 const labelWelcome = document.querySelector('.welcome');
-const labelDate = document.querySelector('.date');
+const labelDate = document.querySelector('.balance__date .date');
 const labelBalance = document.querySelector('.balance__value');
 const labelSumIn = document.querySelector('.summary__value--in');
 const labelSumOut = document.querySelector('.summary__value--out');
@@ -60,6 +60,18 @@ const inputTransferAmount = document.querySelector('.form__input--amount');
 const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
+
+// Function to format the date as DD/MM/YYYY
+const formatDate = (date) => {
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+  const year = date.getFullYear();
+  return `${day}/${month}/${year}`;
+};
+
+// Set the current date
+const now = new Date();
+labelDate.textContent = formatDate(now);
 
 // Functions
 const displayMovements = function (movements, sort = false) {
